@@ -12,6 +12,11 @@ connectToMongoDB("mongodb://localhost:27017/short-url").then(() => {
 
 app.use(bodyParser.json())
 app.use("/url", urlRouter)
+
+app.get("/", (req, res) => {
+  res.json({ message: "Server Running..." })
+})
+
 app.get("/:shortId", redirectURLRouter)
 
 app.listen(8080, () => {
